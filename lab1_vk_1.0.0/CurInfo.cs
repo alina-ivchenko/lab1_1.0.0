@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lab1_vk
+namespace lab1_vk_1._0._0
 {
     public class CurInfo
     {
