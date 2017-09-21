@@ -1,0 +1,8 @@
+D:\лабы\СПП\lab1_vk_1.0.0\lab1_vk_1.0.0\bin\Debug\lab1_vk_1.0.0.exe.config
+D:\лабы\СПП\lab1_vk_1.0.0\lab1_vk_1.0.0\bin\Debug\lab1_vk_1.0.0.exe
+D:\лабы\СПП\lab1_vk_1.0.0\lab1_vk_1.0.0\bin\Debug\lab1_vk_1.0.0.pdb
+D:\лабы\СПП\lab1_vk_1.0.0\lab1_vk_1.0.0\obj\Debug\lab1_vk_1.0.0.csprojResolveAssemblyReference.cache
+D:\лабы\СПП\lab1_vk_1.0.0\lab1_vk_1.0.0\obj\Debug\lab1_vk_1.0.0.exe
+D:\лабы\СПП\lab1_vk_1.0.0\lab1_vk_1.0.0\obj\Debug\lab1_vk_1.0.0.pdb
+D:\лабы\СПП\lab1_vk_1.0.0\lab1_vk_1.0.0\bin\Debug\Newtonsoft.Json.dll
+D:\лабы\СПП\lab1_vk_1.0.0\lab1_vk_1.0.0\bin\Debug\Newtonsoft.Json.xml
