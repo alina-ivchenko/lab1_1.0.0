@@ -1,33 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 using System.Threading;
 using System.Globalization;
 
-namespace lab1_vk
+namespace WebCurrency_lab1
 {
-    public partial class Form1 : Form
+    public partial class WebFormMain : System.Web.UI.Page
     {
         private const string localTime = "ru-RU";
         private const string urlBegin = "http://www.nbrb.by/API/ExRates/Rates/";
         private string[] urlCode = new string[] { "840", "978", "643", "980" };
         private const string urlEnd = "?ParamMode=1";
 
-        public Form1()
-        {
-            InitializeComponent();
-        }
+        //private int cellCnt = 2;
 
-        private void Form1_Shown(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             Update(urlBegin, urlCode, urlEnd, localTime);
         }
@@ -35,12 +29,10 @@ namespace lab1_vk
         private void GetCur(string urlBegin, string[] urlCode, string urlEnd)
         {
 
-            //var curList = new List<CurInfo>();
+          
             var curItem = new CurInfo();
-            //bool flag = true;
-            //while(true)
-            //{
-            tBInfo.Clear();
+            
+            //tBInfo.Clear();
             for (int i = 0; i < urlCode.Length; i++)
             {
                 string url = urlBegin + urlCode[i] + urlEnd;
@@ -51,12 +43,30 @@ namespace lab1_vk
                 {
                     response = streamReader.ReadToEnd();
                 }
-                //curList.Add(JsonConvert.DeserializeObject<CurInfo>(response));
+               
                 curItem = JsonConvert.DeserializeObject<CurInfo>(response);
-                tBInfo.AppendText(curItem.Cur_Scale + " "+ curItem.Cur_Abbreviation + "   " + curItem.Cur_OfficialRate + Environment.NewLine);
+                //tBInfo.AppendText(curItem.Cur_Scale + " " + curItem.Cur_Abbreviation + "   " + curItem.Cur_OfficialRate + Environment.NewLine);
+
+                TableRow tRow = new TableRow();
+      TableCur.Rows.Add(tRow);
+      for (int cellCtr = 1; cellCtr <= 2; cellCtr++)
+      {
+          // Create a new cell and add it to the row.
+          TableCell tCell = new TableCell();
+          //tCell.Text = "Row " + (i + 1) + ", Cell " + cellCtr;
+          if (cellCtr == 1)
+          {
+              tCell.Text = curItem.Cur_Scale + " " + curItem.Cur_Abbreviation + ":   ";
+          }
+          else
+          {
+              tCell.Text = curItem.Cur_OfficialRate;
+          }
+           
+          tRow.Cells.Add(tCell);
+      }
             }
-            //Thread.Sleep(10000);
-            //}
+            
         }
 
         private string GetTime(string localTime)
@@ -69,12 +79,12 @@ namespace lab1_vk
         private void Update(string urlBegin, string[] urlCode, string urlEnd, string localTime)
         {
             GetCur(urlBegin, urlCode, urlEnd);
-            lblTimeUpdate.Text = GetTime(localTime);
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            Update(urlBegin, urlCode, urlEnd, localTime);
+            //lblTimeUpdate.Text = GetTime(localTime);
+            LabelTimeUpdate.Text = GetTime(localTime);
         }
     }
 }
+
+/*<td class="auto-style1">&nbsp;</td>
+                <td class="auto-style2">&nbsp;</td>
+                <td></td>*/

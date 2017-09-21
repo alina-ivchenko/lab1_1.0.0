@@ -1,0 +1,8 @@
+D:\лабы\СПП\WebCurrency_lab1\WebCurrency_lab1\bin\WebCurrency_lab1.dll.config
+D:\лабы\СПП\WebCurrency_lab1\WebCurrency_lab1\bin\WebCurrency_lab1.dll
+D:\лабы\СПП\WebCurrency_lab1\WebCurrency_lab1\bin\WebCurrency_lab1.pdb
+D:\лабы\СПП\WebCurrency_lab1\WebCurrency_lab1\bin\Newtonsoft.Json.dll
+D:\лабы\СПП\WebCurrency_lab1\WebCurrency_lab1\bin\Newtonsoft.Json.xml
+D:\лабы\СПП\WebCurrency_lab1\WebCurrency_lab1\obj\Debug\WebCurrency_lab1.csprojResolveAssemblyReference.cache
+D:\лабы\СПП\WebCurrency_lab1\WebCurrency_lab1\obj\Debug\WebCurrency_lab1.dll
+D:\лабы\СПП\WebCurrency_lab1\WebCurrency_lab1\obj\Debug\WebCurrency_lab1.pdb
