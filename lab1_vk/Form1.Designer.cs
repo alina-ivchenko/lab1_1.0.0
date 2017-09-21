@@ -44,6 +44,7 @@
             // lblTime
             // 
             this.lblTime.AutoSize = true;
+            this.lblTime.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblTime.Location = new System.Drawing.Point(12, 213);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(132, 13);
