@@ -1,0 +1,11 @@
+D:\лабы\СПП\lab1_vk\lab1_vk\bin\Debug\lab1_vk.exe.config
+D:\лабы\СПП\lab1_vk\lab1_vk\bin\Debug\lab1_vk.exe
+D:\лабы\СПП\lab1_vk\lab1_vk\bin\Debug\lab1_vk.pdb
+D:\лабы\СПП\lab1_vk\lab1_vk\bin\Debug\Newtonsoft.Json.dll
+D:\лабы\СПП\lab1_vk\lab1_vk\bin\Debug\Newtonsoft.Json.xml
+D:\лабы\СПП\lab1_vk\lab1_vk\obj\Debug\lab1_vk.csprojResolveAssemblyReference.cache
+D:\лабы\СПП\lab1_vk\lab1_vk\obj\Debug\lab1_vk.Form1.resources
+D:\лабы\СПП\lab1_vk\lab1_vk\obj\Debug\lab1_vk.Properties.Resources.resources
+D:\лабы\СПП\lab1_vk\lab1_vk\obj\Debug\lab1_vk.csproj.GenerateResource.Cache
+D:\лабы\СПП\lab1_vk\lab1_vk\obj\Debug\lab1_vk.exe
+D:\лабы\СПП\lab1_vk\lab1_vk\obj\Debug\lab1_vk.pdb
