@@ -71,5 +71,10 @@ namespace lab1_vk
             GetCur(urlBegin, urlCode, urlEnd);
             lblTimeUpdate.Text = GetTime(localTime);
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            Update(urlBegin, urlCode, urlEnd, localTime);
+        }
     }
 }

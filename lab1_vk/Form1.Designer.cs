@@ -31,6 +31,7 @@
             this.tBInfo = new System.Windows.Forms.TextBox();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblTimeUpdate = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tBInfo
@@ -45,7 +46,7 @@
             // 
             this.lblTime.AutoSize = true;
             this.lblTime.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblTime.Location = new System.Drawing.Point(12, 213);
+            this.lblTime.Location = new System.Drawing.Point(21, 240);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(132, 13);
             this.lblTime.TabIndex = 1;
@@ -54,16 +55,27 @@
             // lblTimeUpdate
             // 
             this.lblTimeUpdate.AutoSize = true;
-            this.lblTimeUpdate.Location = new System.Drawing.Point(150, 213);
+            this.lblTimeUpdate.Location = new System.Drawing.Point(159, 240);
             this.lblTimeUpdate.Name = "lblTimeUpdate";
             this.lblTimeUpdate.Size = new System.Drawing.Size(0, 13);
             this.lblTimeUpdate.TabIndex = 2;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(8, 195);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(265, 31);
+            this.btnUpdate.TabIndex = 3;
+            this.btnUpdate.Text = "Обновить данные";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.lblTimeUpdate);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.tBInfo);
@@ -80,6 +92,7 @@
         private System.Windows.Forms.TextBox tBInfo;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblTimeUpdate;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
 
