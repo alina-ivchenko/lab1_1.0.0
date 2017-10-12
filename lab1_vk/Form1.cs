@@ -17,10 +17,13 @@ namespace lab1_vk
 {
     public partial class Form1 : Form
     {
+        public delegate void InputStrDelegate(string InputStr);
+
         private const string localTime = "ru-RU";
         private const string urlBegin = "http://www.nbrb.by/API/ExRates/Rates/";
         private string[] urlCode = new string[] { "840", "978", "643", "980" };
         private const string urlEnd = "?ParamMode=1";
+        bool flagColorChanged = false;
 
         public Form1()
         {
@@ -29,34 +32,59 @@ namespace lab1_vk
 
         private void Form1_Shown(object sender, EventArgs e)
         {
+            this.BackColor = System.Drawing.Color.Green;
             Update(urlBegin, urlCode, urlEnd, localTime);
         }
 
-        private void GetCur(string urlBegin, string[] urlCode, string urlEnd)
+        private async void GetCur(string urlBegin, string[] urlCode, string urlEnd)
         {
-
-            //var curList = new List<CurInfo>();
-            var curItem = new CurInfo();
-            //bool flag = true;
-            //while(true)
-            //{
+            string response;
+            
             tBInfo.Clear();
-            for (int i = 0; i < urlCode.Length; i++)
+            btnUpdate.Enabled = false;
+
+            try
             {
-                string url = urlBegin + urlCode[i] + urlEnd;
-                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-                HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                string response;
-                using (StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream()))
+                for (int i = 0; i < urlCode.Length; i++)
                 {
-                    response = streamReader.ReadToEnd();
+                    string url = urlBegin + urlCode[i] + urlEnd;
+                    HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+
+                    var httpWebResponse = await httpWebRequest.GetResponseAsync();
+                    using (StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream()))
+                    {
+                        response = streamReader.ReadToEnd();
+                    }
+
+                    var newThread = new Thread(new ParameterizedThreadStart(DeserializeResponce));
+                    newThread.Start(response);
                 }
-                //curList.Add(JsonConvert.DeserializeObject<CurInfo>(response));
-                curItem = JsonConvert.DeserializeObject<CurInfo>(response);
-                tBInfo.AppendText(curItem.Cur_Scale + " "+ curItem.Cur_Abbreviation + "   " + curItem.Cur_OfficialRate + Environment.NewLine);
             }
-            //Thread.Sleep(10000);
-            //}
+            catch
+            {
+                MessageBox.Show("OOPS!");
+            }
+            btnUpdate.Enabled = true;
+        }
+
+        private void DeserializeResponce(Object obj)
+        {
+            string response = (string)obj;
+            var curItem = new CurInfo();
+            curItem = JsonConvert.DeserializeObject<CurInfo>(response);
+            PrintInfo(curItem.Cur_Scale + " " + curItem.Cur_Abbreviation + "   " + curItem.Cur_OfficialRate + "\n");
+        }
+
+        public void PrintInfo(string inputStr)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new InputStrDelegate(PrintInfo), inputStr);
+            }
+            else
+            {
+                tBInfo.AppendText(inputStr);
+            }
         }
 
         private string GetTime(string localTime)
@@ -75,6 +103,20 @@ namespace lab1_vk
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             Update(urlBegin, urlCode, urlEnd, localTime);
+        }
+
+        private void btnChangeColor_Click(object sender, EventArgs e)
+        {
+            if (!flagColorChanged)
+            {
+                this.BackColor = System.Drawing.Color.DarkBlue;
+                flagColorChanged = true;
+            }
+            else
+            {
+                this.BackColor = System.Drawing.Color.Green;
+                flagColorChanged = false;
+            }
         }
     }
 }
