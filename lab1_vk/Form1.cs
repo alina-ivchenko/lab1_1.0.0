@@ -32,32 +32,51 @@ namespace lab1_vk
             Update(urlBegin, urlCode, urlEnd, localTime);
         }
 
-        private void GetCur(string urlBegin, string[] urlCode, string urlEnd)
+        private async void GetCur(string urlBegin, string[] urlCode, string urlEnd)
         {
-
-            //var curList = new List<CurInfo>();
-            var curItem = new CurInfo();
-            //bool flag = true;
-            //while(true)
-            //{
+            //var curItem = new CurInfo();
+            string response;// = new string[urlCode.Length];
+            
             tBInfo.Clear();
-            for (int i = 0; i < urlCode.Length; i++)
+
+            try
             {
-                string url = urlBegin + urlCode[i] + urlEnd;
-                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-                HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                string response;
-                using (StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream()))
+                for (int i = 0; i < urlCode.Length; i++)
                 {
-                    response = streamReader.ReadToEnd();
+                    string url = urlBegin + urlCode[i] + urlEnd;
+                    HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+                     
+                    //HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                    //var httpWebResponse = await httpWebRequest.GetRequestStreamAsync();
+                    var httpWebResponse = await httpWebRequest.GetResponseAsync();
+                    //string response;
+                    using (StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream()))
+                    {
+                        response = streamReader.ReadToEnd();
+                    }
+
+                    /*var newThread = new Thread(new ParameterizedThreadStart(DeserializeResponce));
+                    newThread.Start(response);*/
+
+                    var curItem = new CurInfo(); 
+                    curItem = JsonConvert.DeserializeObject<CurInfo>(response);
+                    tBInfo.AppendText(curItem.Cur_Scale + " " + curItem.Cur_Abbreviation + "   " + curItem.Cur_OfficialRate + Environment.NewLine);
                 }
-                //curList.Add(JsonConvert.DeserializeObject<CurInfo>(response));
-                curItem = JsonConvert.DeserializeObject<CurInfo>(response);
-                tBInfo.AppendText(curItem.Cur_Scale + " "+ curItem.Cur_Abbreviation + "   " + curItem.Cur_OfficialRate + Environment.NewLine);
             }
-            //Thread.Sleep(10000);
-            //}
+            catch
+            {
+                MessageBox.Show("OOPS!");
+            }
         }
+
+       /* private void DeserializeResponce(Object obj)
+        {
+            string response = (string)obj;
+            var curItem = new CurInfo();
+            curItem = JsonConvert.DeserializeObject<CurInfo>(response);
+            //tBInfo.AppendText(curItem.Cur_Scale + " " + curItem.Cur_Abbreviation + "   " + curItem.Cur_OfficialRate + Environment.NewLine);
+            //return (curItem.Cur_Scale + " " + curItem.Cur_Abbreviation + "   " + curItem.Cur_OfficialRate);
+        }*/
 
         private string GetTime(string localTime)
         {
