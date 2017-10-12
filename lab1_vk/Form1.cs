@@ -58,6 +58,7 @@ namespace lab1_vk
 
                     var newThread = new Thread(new ParameterizedThreadStart(DeserializeResponce));
                     newThread.Start(response);
+                    timerUpdate.Start();
                 }
             }
             catch
@@ -117,6 +118,11 @@ namespace lab1_vk
                 this.BackColor = System.Drawing.Color.Green;
                 flagColorChanged = false;
             }
+        }
+
+        private void timerUpdate_Tick(object sender, EventArgs e)
+        {
+            Update(urlBegin, urlCode, urlEnd, localTime);
         }
     }
 }

@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tBInfo = new System.Windows.Forms.TextBox();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblTimeUpdate = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnChangeColor = new System.Windows.Forms.Button();
+            this.timerUpdate = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // tBInfo
@@ -82,6 +84,11 @@
             this.btnChangeColor.UseVisualStyleBackColor = false;
             this.btnChangeColor.Click += new System.EventHandler(this.btnChangeColor_Click);
             // 
+            // timerUpdate
+            // 
+            this.timerUpdate.Interval = 3000;
+            this.timerUpdate.Tick += new System.EventHandler(this.timerUpdate_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,6 +115,7 @@
         private System.Windows.Forms.Label lblTimeUpdate;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnChangeColor;
+        private System.Windows.Forms.Timer timerUpdate;
     }
 }
 
